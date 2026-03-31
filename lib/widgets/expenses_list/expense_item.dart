@@ -21,9 +21,9 @@ class ExpenseItem extends StatelessWidget {
               Text('\$${expense.amount.toStringAsFixed(2)}'), //amount first
               Spacer(),//spacer to push everything else over to the right
               Row(children: [ //Cat and Date closely grouped, so another row in this row
-                const Icon(Icons.alarm), //change this later to look up a correct icon for the cat
+                Icon(categoryIcons[expense.category]), //change this later to look up a correct icon for the cat
                 const SizedBox(width:8),
-                Text(expense.date.toString()) //fix this date to not look stupid
+                Text(expense.formattedDate)
               ],)
             ],)
           ],
