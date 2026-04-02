@@ -12,6 +12,11 @@ class Expenses extends StatefulWidget {
 
 }
 class _ExpensesState extends State<Expenses>{
+  void _openAddExpenseOverlay(){
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => NewExpense());
+  }
   final List<Expense> _registeredExpenses = [
     Expense(
       title: 'Ginos Pizza',
@@ -37,11 +42,11 @@ class _ExpensesState extends State<Expenses>{
     return Scaffold(
       appBar:AppBar(
         title: const Text("Expense Tracker"),
-        actions: [
+        actions:[
           IconButton(icon: const Icon(Icons.add)),
-          onPresses:(){
+          onPressed: _openAddExpenseOverlay, 
+          //Add more here if needed
 
-          },
         ],
       ),
       body: Column(
