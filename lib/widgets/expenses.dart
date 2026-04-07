@@ -44,10 +44,11 @@ class _ExpensesState extends State<Expenses>{
       appBar:AppBar(
         title: const Text("Expense Tracker"),
         actions:[
-          IconButton(icon: const Icon(Icons.add)),
-          onPressed: _openAddExpenseOverlay, 
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add), 
           //Add more here if needed
-          ) 
+          ), 
         ],
       ),
       body: Column(
@@ -55,8 +56,9 @@ class _ExpensesState extends State<Expenses>{
           Text("CHART GOES HERE"),
           Expanded(
             child: ExpensesList(
-              expenses: _registeredExpenses)
-              ),
+              expenses: _registeredExpenses,
+            ),
+          ),
         ],
       ),
     );
