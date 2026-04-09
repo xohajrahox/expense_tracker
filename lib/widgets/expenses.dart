@@ -24,7 +24,11 @@ class _ExpensesState extends State<Expenses>{
       _registeredExpenses.add(expense);
     });
   }
-
+  void _removeExpense(Expense expense){
+    setState((){
+      _registeredExpenses.remove(expense);
+    });
+  }
   final List<Expense> _registeredExpenses = [
     Expense(
       title: 'Ginos Pizza',
@@ -51,11 +55,10 @@ class _ExpensesState extends State<Expenses>{
       appBar:AppBar(
         title: const Text("Expense Tracker"),
         actions:[
-          IconButton(
-            onPressed: _openAddExpenseOverlay,
-            icon: const Icon(Icons.add), 
+          IconButton(icon: const Icon(Icons.add),
+            onPressed: _openAddExpenseOverlay, 
           //Add more here if needed
-          ), 
+          ) 
         ],
       ),
       body: Column(
@@ -63,11 +66,12 @@ class _ExpensesState extends State<Expenses>{
           Text("CHART GOES HERE"),
           Expanded(
             child: ExpensesList(
-              expenses: _registeredExpenses,
-            ),
-          ),
+              onRemoveExpense: _removeExpense,
+              expenses: _registeredExpenses)
+              ),
         ],
       ),
     );
   }
+
 }
